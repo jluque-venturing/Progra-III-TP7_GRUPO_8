@@ -25,11 +25,11 @@
                 <tr>
                     <td class="auto-style2" style="background-position: center center">&nbsp;</td>
                     <td style="background-position: center center">
-            <asp:HyperLink ID="hlListadoSucursales" runat="server" NavigateUrl="~/SeleccionarSucursales.aspx">Listado de sucursales</asp:HyperLink>
+                        <asp:HyperLink ID="hlListadoSucursales" runat="server" NavigateUrl="~/SeleccionarSucursales.aspx">Listado de sucursales</asp:HyperLink>
                     </td>
                     <td class="auto-style3" style="background-position: center center">&nbsp;</td>
                     <td style="background-position: center center">
-            <asp:HyperLink ID="hlMostrarSucursalesSeleccionadas" runat="server" NavigateUrl="~/ListadoSucursalesSeleccionados.aspx">Mostrar sucursales seleccionadas</asp:HyperLink>
+                        <asp:HyperLink ID="hlMostrarSucursalesSeleccionadas" runat="server" NavigateUrl="~/ListadoSucursalesSeleccionados.aspx">Mostrar sucursales seleccionadas</asp:HyperLink>
                     </td>
                     <td style="background-position: center center">&nbsp;</td>
                 </tr>
@@ -53,6 +53,9 @@
                             </LayoutTemplate>
                             <ItemTemplate>
                                 <tr>
+                                    <td>
+                                        <asp:ImageButton ID="ibImagenSucursal" runat="server" ImageUrl='<%# Eval("URL_Imagen_Sucursal") %>' />
+                                    </td>
                                     <td>
                                         <asp:Label ID="lblNombre" runat="server" Text='<%# Eval("NombreSucursal") %>'></asp:Label>
                                         <br />
