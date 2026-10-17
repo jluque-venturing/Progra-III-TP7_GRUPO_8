@@ -15,9 +15,23 @@ namespace TP7_GRUPO_8
         {
             if (!IsPostBack)
             {
-                lvSucursales.DataSource = new Conexion().ObtenerTabla(consultaSucursales);
-                lvSucursales.DataBind();
+                CargarSucursales();
             }
+        }
+
+        private void CargarSucursales()
+        {
+            lvSucursales.DataSource = new Conexion().ObtenerTabla(consultaSucursales);
+            lvSucursales.DataBind();
+        }
+
+        protected void lvSucursales_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
+        {
+            DataPager1.SetPageProperties(
+            e.StartRowIndex,
+            e.MaximumRows, false);
+
+            CargarSucursales();
         }
     }
 }

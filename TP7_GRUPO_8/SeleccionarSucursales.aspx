@@ -45,7 +45,7 @@
                 <tr>
                     <td class="auto-style2" style="background-position: center center">&nbsp;</td>
                     <td style="background-position: center center">
-                        <asp:ListView ID="lvSucursales" runat="server">
+                        <asp:ListView ID="lvSucursales" runat="server" OnPagePropertiesChanging="lvSucursales_PagePropertiesChanging">
                             <LayoutTemplate>
                                 <table>
                                     <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
@@ -71,7 +71,13 @@
                 </tr>
                 <tr>
                     <td class="auto-style2" style="background-position: center center">&nbsp;</td>
-                    <td style="background-position: center center">&nbsp;</td>
+                    <td style="background-position: center center">
+                        <asp:DataPager ID="DataPager1" runat="server" PagedControlID="lvSucursales" PageSize="2">
+                            <Fields>
+                                <asp:NumericPagerField />
+                            </Fields>
+                        </asp:DataPager>
+                    </td>
                     <td class="auto-style3" style="background-position: center center">&nbsp;</td>
                     <td style="background-position: center center">&nbsp;</td>
                     <td style="background-position: center center">&nbsp;</td>
