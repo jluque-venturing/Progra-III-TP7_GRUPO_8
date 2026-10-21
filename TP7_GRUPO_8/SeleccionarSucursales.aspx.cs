@@ -33,5 +33,13 @@ namespace TP7_GRUPO_8
 
             CargarSucursales();
         }
+
+        protected void lvSucursales_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Seleccionar")
+            {
+                string[] datos = e.CommandArgument.ToString().Split('|');
+            }
+        }
     }
 }

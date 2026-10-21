@@ -45,7 +45,7 @@
                 <tr>
                     <td class="auto-style2" style="background-position: center center">&nbsp;</td>
                     <td style="background-position: center center">
-                        <asp:ListView ID="lvSucursales" runat="server" OnPagePropertiesChanging="lvSucursales_PagePropertiesChanging">
+                        <asp:ListView ID="lvSucursales" runat="server" OnPagePropertiesChanging="lvSucursales_PagePropertiesChanging" OnItemCommand="lvSucursales_ItemCommand">
                             <LayoutTemplate>
                                 <table>
                                     <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
@@ -60,6 +60,10 @@
                                         <asp:Label ID="lblNombre" runat="server" Text='<%# Eval("NombreSucursal") %>'></asp:Label>
                                         <br />
                                         <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("DescripcionSucursal") %>'></asp:Label>
+                                        <br />
+                                        <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar"
+                                            CommandName="Seleccionar"
+                                            CommandArgument='<%# Eval("Id_Sucursal") + "|" + Eval("NombreSucursal") + "|" + Eval("DescripcionSucursal") %>' />
                                     </td>
                                 </tr>
                             </ItemTemplate>
