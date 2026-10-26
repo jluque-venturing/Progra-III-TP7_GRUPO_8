@@ -9,7 +9,7 @@ namespace TP7_GRUPO_8
 {
     public class Conexion
     {
-        private string cadenaConexion = @"Data Source=.\SQLEXPRESS;Initial Catalog=BDSucursales;Integrated Security=True";
+        private string cadenaConexion = @"Data Source=localhost\sqlexpress;Initial Catalog=BDSucursales;Integrated Security=True";
 
         public string CadenaConexion
         {

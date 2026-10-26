@@ -31,6 +31,7 @@ namespace TP7_GRUPO_8
         {
             if (!IsPostBack)
             {
+                Session["ProvinciaSeleccionada"] = null;
                 CargarSucursales("");
                 CargarProvincias();
             }
@@ -46,7 +47,11 @@ namespace TP7_GRUPO_8
         {
             string consulta = consultaSucursales;
 
-            if (filtro != "")
+            if (Session["ProvinciaSeleccionada"] != null)
+            {
+                consulta += " WHERE Id_ProvinciaSucursal = " + Session["ProvinciaSeleccionada"];
+            }
+            else if (filtro != "")
             {
                 consulta += " WHERE NombreSucursal LIKE '%" + filtro + "%'";
             }
@@ -96,6 +101,12 @@ namespace TP7_GRUPO_8
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+            {
+                return;
+            }
+
+            Session["ProvinciaSeleccionada"] = null;
             CargarSucursales(txtBuscar.Text);
         }
 
@@ -103,12 +114,10 @@ namespace TP7_GRUPO_8
         {
             if (e.CommandName == "Filtrar")
             {
-                int idProvincia = Convert.ToInt32(e.CommandArgument);
+                Session["ProvinciaSeleccionada"] = Convert.ToInt32(e.CommandArgument);
+                txtBuscar.Text = "";
 
-                string consulta = consultaSucursales + " WHERE Id_ProvinciaSucursal = " + idProvincia;
-
-                lvSucursales.DataSource = new Conexion().ObtenerTabla(consulta);
-                lvSucursales.DataBind();
+                CargarSucursales("");
             }
 
         }

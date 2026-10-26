@@ -61,6 +61,13 @@
                     Text="Buscar"
                     OnClick="btnBuscar_Click" />
 
+                    <asp:RegularExpressionValidator ID="revBuscar" runat="server"
+                        ControlToValidate="txtBuscar"
+                        ValidationExpression="^[a-zA-ZÀ-ÿ0-9\s.,\-]*$"
+                        ErrorMessage="El nombre de sucursal sólo admite letras, números, espacios y . , -"
+                        Display="Dynamic"
+                        ForeColor="Red" />
+
                          <br />
                         <br />
                         <asp:ListView ID="lvSucursales" runat="server" OnPagePropertiesChanging="lvSucursales_PagePropertiesChanging" OnItemCommand="lvSucursales_ItemCommand">
