@@ -85,6 +85,8 @@ namespace TP7_GRUPO_8
                 string nombre = datos[1];
                 string descripcion = datos[2];
 
+                AgregarFila(tabla, id, nombre, descripcion);
+
                 Session["SucursalesSeleccionadas"] = tabla;
             }
 
