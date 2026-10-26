@@ -31,13 +31,20 @@ namespace TP7_GRUPO_8
         {
             if (!IsPostBack)
             {
-                CargarSucursales();
+                CargarSucursales("");
             }
         }
 
-        private void CargarSucursales()
+        private void CargarSucursales(string filtro)
         {
-            lvSucursales.DataSource = new Conexion().ObtenerTabla(consultaSucursales);
+            string consulta = consultaSucursales;
+
+            if (filtro != "")
+            {
+                consulta += " WHERE NombreSucursal LIKE '%" + filtro + "%'";
+            }
+
+            lvSucursales.DataSource = new Conexion().ObtenerTabla(consulta);
             lvSucursales.DataBind();
         }
 
@@ -47,7 +54,7 @@ namespace TP7_GRUPO_8
             e.StartRowIndex,
             e.MaximumRows, false);
 
-            CargarSucursales();
+            CargarSucursales(txtBuscar.Text);
         }
 
         protected void lvSucursales_ItemCommand(object sender, ListViewCommandEventArgs e)
@@ -76,6 +83,11 @@ namespace TP7_GRUPO_8
 
 
 
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            CargarSucursales(txtBuscar.Text);
         }
     }
 }

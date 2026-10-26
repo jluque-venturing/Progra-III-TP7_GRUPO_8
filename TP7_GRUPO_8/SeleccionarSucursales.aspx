@@ -45,6 +45,14 @@
                 <tr>
                     <td class="auto-style2" style="background-position: center center">&nbsp;</td>
                     <td style="background-position: center center">
+                        <asp:TextBox ID="txtBuscar" runat="server"></asp:TextBox>
+
+                    <asp:Button ID="btnBuscar" runat="server"
+                    Text="Buscar"
+                    OnClick="btnBuscar_Click" />
+
+                         <br />
+                        <br />
                         <asp:ListView ID="lvSucursales" runat="server" OnPagePropertiesChanging="lvSucursales_PagePropertiesChanging" OnItemCommand="lvSucursales_ItemCommand">
                             <LayoutTemplate>
                                 <table>
