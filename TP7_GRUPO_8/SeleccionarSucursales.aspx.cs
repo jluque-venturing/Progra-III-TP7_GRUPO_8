@@ -32,7 +32,14 @@ namespace TP7_GRUPO_8
             if (!IsPostBack)
             {
                 CargarSucursales("");
+                CargarProvincias();
             }
+        }
+
+        private void CargarProvincias()
+        {
+            dlProvincias.DataSource = new Conexion().ObtenerTabla("SELECT Id_Provincia, DescripcionProvincia FROM Provincia");
+            dlProvincias.DataBind();
         }
 
         private void CargarSucursales(string filtro)
@@ -88,6 +95,20 @@ namespace TP7_GRUPO_8
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             CargarSucursales(txtBuscar.Text);
+        }
+
+        protected void dlProvincias_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if (e.CommandName == "Filtrar")
+            {
+                int idProvincia = Convert.ToInt32(e.CommandArgument);
+
+                string consulta = consultaSucursales + " WHERE Id_ProvinciaSucursal = " + idProvincia;
+
+                lvSucursales.DataSource = new Conexion().ObtenerTabla(consulta);
+                lvSucursales.DataBind();
+            }
+
         }
     }
 }

@@ -43,9 +43,19 @@
             </table>
             <table>
                 <tr>
-                    <td class="auto-style2" style="background-position: center center">&nbsp;</td>
-                    <td style="background-position: center center">
-                        <asp:TextBox ID="txtBuscar" runat="server"></asp:TextBox>
+                   <td class="auto-style2">
+    <asp:DataList ID="dlProvincias" runat="server"
+        OnItemCommand="dlProvincias_ItemCommand">
+        <ItemTemplate>
+            <asp:Button ID="btnProvincia" runat="server"
+                Text='<%# Eval("DescripcionProvincia") %>'
+                CommandName="Filtrar"
+                CommandArgument='<%# Eval("Id_Provincia") %>' />
+        </ItemTemplate>
+    </asp:DataList>
+</td>
+                     <td>   
+                    <asp:TextBox ID="txtBuscar" runat="server"></asp:TextBox>
 
                     <asp:Button ID="btnBuscar" runat="server"
                     Text="Buscar"
