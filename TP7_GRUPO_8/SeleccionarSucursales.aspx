@@ -70,7 +70,7 @@
 
                          <br />
                         <br />
-                        <asp:ListView ID="lvSucursales" runat="server" OnPagePropertiesChanging="lvSucursales_PagePropertiesChanging" OnItemCommand="lvSucursales_ItemCommand">
+                        <asp:ListView ID="lvSucursales" runat="server" DataKeyNames="Id_Sucursal" OnPagePropertiesChanging="lvSucursales_PagePropertiesChanging" OnItemCommand="lvSucursales_ItemCommand">
                             <LayoutTemplate>
                                 <table>
                                     <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
@@ -87,8 +87,7 @@
                                         <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("DescripcionSucursal") %>'></asp:Label>
                                         <br />
                                         <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar"
-                                            CommandName="Seleccionar"
-                                            CommandArgument='<%# Eval("Id_Sucursal") + "|" + Eval("NombreSucursal") + "|" + Eval("DescripcionSucursal") %>' />
+                                            CommandName="Seleccionar" />
                                     </td>
                                 </tr>
                             </ItemTemplate>

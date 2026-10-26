@@ -73,8 +73,6 @@ namespace TP7_GRUPO_8
         {
             if (e.CommandName == "Seleccionar")
             {
-                string[] datos = e.CommandArgument.ToString().Split('|');
-
                 DataTable tabla;
 
                 if (Session["SucursalesSeleccionadas"] == null)
@@ -86,9 +84,9 @@ namespace TP7_GRUPO_8
                     tabla = (DataTable)Session["SucursalesSeleccionadas"];
                 }
 
-                int id = Convert.ToInt32(datos[0]);
-                string nombre = datos[1];
-                string descripcion = datos[2];
+                int id = Convert.ToInt32(lvSucursales.DataKeys[e.Item.DisplayIndex].Value);
+                string nombre = ((Label)e.Item.FindControl("lblNombre")).Text;
+                string descripcion = ((Label)e.Item.FindControl("lblDescripcion")).Text;
 
                 AgregarFila(tabla, id, nombre, descripcion);
 
@@ -107,6 +105,7 @@ namespace TP7_GRUPO_8
             }
 
             Session["ProvinciaSeleccionada"] = null;
+            DataPager1.SetPageProperties(0, DataPager1.MaximumRows, false);
             CargarSucursales(txtBuscar.Text);
         }
 
@@ -116,6 +115,7 @@ namespace TP7_GRUPO_8
             {
                 Session["ProvinciaSeleccionada"] = Convert.ToInt32(e.CommandArgument);
                 txtBuscar.Text = "";
+                DataPager1.SetPageProperties(0, DataPager1.MaximumRows, false);
 
                 CargarSucursales("");
             }
